@@ -20,7 +20,6 @@ HEADERS = {
 # API
 
 def get_revision_id():
-    """Return the latest revision ID for the article."""
     params = {
         "action": "query",
         "titles": ARTICLE,
@@ -41,7 +40,6 @@ def get_revision_id():
 
 
 def get_article_state():
-    """Return (revision_id, first_sentence)."""
     params = {
         "action": "query",
         "titles": ARTICLE,
@@ -67,7 +65,6 @@ def get_article_state():
     if not text:
         raise RuntimeError("Article has no introduction.")
 
-    # Extract the first sentence.
     match = re.match(r"^(.+?[.!?])(?:\s|$)", text, re.DOTALL)
 
     if match:
@@ -81,7 +78,6 @@ def get_article_state():
 # Main
 
 def log(message):
-    """Print a timestamped log message."""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     print(f"[{timestamp}] {message}")
 
@@ -123,7 +119,7 @@ def main():
                 if " is " in previous_sentence and " was " in current_sentence:
                     print()
                     print("=" * 60)
-                    print("⚠️  DETECTED 'is' → 'was' TRANSITION")
+                    print(" IS -> WAS change detected!")
                     print("=" * 60)
 
             previous_sentence = current_sentence
