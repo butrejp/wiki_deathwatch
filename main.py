@@ -121,6 +121,7 @@ def main():
                     print("=" * 60)
                     print(" IS -> WAS change detected!")
                     print("=" * 60)
+                    return
 
             previous_sentence = current_sentence
 
